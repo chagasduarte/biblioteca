@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+app-home {
+  display: grid;
+  grid-template-areas:
+  "aside header"
+  "aside main"
+  "footer footer";
+  grid-template-columns: auto 1fr;
+}
+
+.cabecalho {
+  grid-area: header;
+  display: flex;
+}
+
+.menu-lateral {
+  grid-area: aside;
+}
+
+.main {
+  grid-area: main;
+}
+
+.rodape {
+  grid-area: footer;
+}
