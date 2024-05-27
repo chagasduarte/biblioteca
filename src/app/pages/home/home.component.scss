@@ -1,0 +1,75 @@
+
+img {
+  max-width:175px;
+  max-height:125px;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+}
+
+.lista__livros {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  column-gap: 1rem;
+
+}
+
+.livros {
+  display:grid;
+  grid-template-areas: "image body";
+  grid-template-columns: auto 1fr;
+}
+
+.imagem{
+  grid-area: image;
+}
+
+.livros .card-body {
+  grid-area: body;
+}
+.lista__livros .card {
+  width: 300px;
+}
+
+.lista__livros .card .card-body {
+  align-items: self-start;
+  display: grid;
+  grid-template-areas:
+    "titulo titulo"
+    "vazio vazio"
+    "status status";
+  background-color: rgb(130, 143, 143);
+  border-radius: 5px;
+}
+.titulo {
+  grid-area: titulo;
+}
+
+.progress {
+  grid-area: status;
+  size: 100rem;
+  height: 5px;
+  align-self: end;
+}
+
+.todos_livros {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  column-gap: 1rem;
+}
+
+.card-livro {
+  display:grid;
+  grid-template-areas: "image body";
+  grid-template-columns: auto auto;
+  max-width: 300px;
+  width: auto;
+}
+
+.bc_livro {
+  width: 200px;
+}
