@@ -20,9 +20,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.livrosService.getLivros().subscribe({
-      next: (success: Livro[]) => {
-        this.livros = success;
-        this.leituras_atuais = success.filter(x => x.status == Status.lendo);
+      next: (success: any) => {
+        console.log("aqui");
+        console.log(success.livros)
+        this.livros = success.livros;
+        this.leituras_atuais = this.livros.filter(x => x.status == Status.lendo);
       }
     });
   }
