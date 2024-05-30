@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { LivrosService } from '../../services/livros.service';
 import { CommonModule } from '@angular/common';
 import { Livro } from '../../models/livros';
 import { Status } from '../../utils/enumerables';
-import { FormControl, FormGroup } from '@angular/forms';
-import { randomInt } from 'crypto';
+import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ CommonModule ],
+  imports: [ CommonModule, ReactiveFormsModule  ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
@@ -29,16 +28,19 @@ export class HomeComponent implements OnInit {
   constructor(private readonly livrosService: LivrosService){}
 
   ngOnInit(): void {
+    this.buscaLivros();
+  }
+
+  buscaLivros(){
     this.livrosService.buscaLivros().subscribe({
       next: (success: Livro[]) => {
         this.livros = success;
-        this.leituras_atuais = success.filter(x => x.status == Status.lendo);
+        this.leituras_atuais = this.livros.filter(x => x.status == Status.lendo);
       }
     });
   }
 
   inserelivro(){
-
     let livro: Livro = {
       id: this.gerarID(),
       imagem: this.livroForm.controls.imagem.value || "",
@@ -48,11 +50,15 @@ export class HomeComponent implements OnInit {
     }
     this.livrosService.insereLivros(livro).subscribe({
       next: (success: Livro) => {
-        console.log(success);
+        this.buscaLivros();
+        this.livroForm.reset();
+      },
+      error: (err: any) => {
+        console.log(err)
       }
     });
   }
   gerarID(){
-    return randomInt(1000);
+    return this.livros.length + 1
   }
 }

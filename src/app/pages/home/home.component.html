@@ -2,8 +2,8 @@
     <ul class="navbar bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand">Livros</a>
-        <form class="d-flex" role="search">
-          <input class="form-control form-control-sm me-2" arial-label="search" type="search">
+        <form class="d-flex" role="search" id="pesquisar">
+          <input class="form-control form-control-sm me-2" arial-label="search" type="search" id="busca_livros">
           <button class="btn" type="submit"><i class="bi bi-search">pesquisar</i></button>
         </form>
       </div>
@@ -82,13 +82,23 @@
                 <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body" formGroup="livroForm">
-                 <label for="">Nome:</label>
-                 <input type="text" formControlName="nome"/>
+              <div class="modal-body" [formGroup]="livroForm">
+                <div>
+                  <label for="nome_livro">Nome:</label>
+                  <input type="text" formControlName="nome" id="nome_livro"/>
+                </div>
+                <div>
+                  <label for="imagem_livro">Imagem:</label>
+                  <input id="imagem_livro" type="text" formControlName="imagem"/>
+                </div>
+                <div>
+                  <label for="preco_livro">Preço:</label>
+                  <input id="preco_livro" type="number" formControlName="valor"/>
+                </div>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" (click)="inserelivro()" >Inserir</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="inserelivro()">Inserir</button>
               </div>
             </div>
 

@@ -7,7 +7,7 @@ import { Livro } from '../models/livros';
   providedIn: 'root'
 })
 export class LivrosService {
-  private url = "../../assets/db.json"
+  private url = "http://localhost:3000/livros"
   constructor( private readonly httpClient: HttpClient) { }
 
   buscaLivros(): Observable<Livro[]>{
