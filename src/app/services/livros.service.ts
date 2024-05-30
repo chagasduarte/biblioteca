@@ -7,14 +7,21 @@ import { Livro } from '../models/livros';
   providedIn: 'root'
 })
 export class LivrosService {
+  private url!: string
 
-  constructor( private readonly httpClient: HttpClient) { }
-
-  getLivros(): Observable<Livro[]>{
-    return this.httpClient.get<Livro[]>("http://localhost:3000/livros");
+  constructor( private readonly httpClient: HttpClient) {
+    this.url = "http://localhost:3000/livros"
   }
-  getLivrosPorStatus(status:number): Observable<Livro[]>{
-    return this.httpClient.get<Livro[]>("http://localhost:3000/livros?status=" + status);
+
+
+  buscaLivros(): Observable<Livro[]>{
+    return this.httpClient.get<Livro[]>(this.url);
+  }
+  buscaLivrosPorStatus(status:number): Observable<Livro[]>{
+    return this.httpClient.get<Livro[]>(this.url + "status=" + status);
+  }
+  insereLivros(livro: Livro) {
+    return this.httpClient.post<Livro>(this.url, livro);
   }
 
 }

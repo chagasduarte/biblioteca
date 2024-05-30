@@ -1,9 +1,11 @@
+import { Status } from "../utils/enumerables";
+
 export interface ILivro {
   id: number,
   nome: string,
   imagem: string,
   valor: number;
-  status: number
+  status: Status
 }
 
 export class Livro implements ILivro {
@@ -11,6 +13,5 @@ export class Livro implements ILivro {
   nome!: string;
   imagem!: string;
   valor!: number;
-  status!: number;
-
+  status!: Status;
 }
