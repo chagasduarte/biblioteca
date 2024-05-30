@@ -5,6 +5,14 @@ img {
   width: auto;
   height: auto;
   border-radius: 5px;
+  cursor: pointer;
+}
+img {
+  transition: transform 0.5s;
+}
+
+img:hover {
+  transform: scale(0.8);
 }
 
 .lista__livros {
@@ -72,4 +80,8 @@ img {
 
 .bc_livro {
   width: 200px;
+}
+
+.label-form {
+  width: 6rem;
 }

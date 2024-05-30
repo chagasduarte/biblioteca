@@ -68,43 +68,14 @@
       </div>
     </section>
 
-    <section class="secao">
+    <section class="secao_biblioteca_completa">
       <div class="d-flex secao__titulo">
         <h2 class="titulo">Biblioteca Completa</h2>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary align-self-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
           adicionar
         </button>
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body" [formGroup]="livroForm">
-                <div>
-                  <label for="nome_livro">Nome:</label>
-                  <input type="text" formControlName="nome" id="nome_livro"/>
-                </div>
-                <div>
-                  <label for="imagem_livro">Imagem:</label>
-                  <input id="imagem_livro" type="text" formControlName="imagem"/>
-                </div>
-                <div>
-                  <label for="preco_livro">Preço:</label>
-                  <input id="preco_livro" type="number" formControlName="valor"/>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="inserelivro()">Inserir</button>
-              </div>
-            </div>
 
-          </div>
-
-        </div>
       </div>
       <div class="lista__livros todos_livros">
          <div class="livros" *ngFor="let livro of  livros">
@@ -137,5 +108,45 @@
 
   <!-- Modal -->
   <div >
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" [formGroup]="livroForm">
+            <div class="d-flex">
+              <label class="me-2 label-form" for="nome_livro">Nome:</label>
+              <input type="text" formControlName="nome" id="nome_livro" class="form-control form-control-sm " required/>
+            </div>
+            <div class="d-flex">
+              <label class="me-2 label-form"  for="imagem_livro">Imagem:</label>
+              <input id="imagem_livro" type="text" formControlName="imagem" class="form-control form-control-sm" required/>
+            </div>
+            <div class="d-flex">
+              <label class="me-2 label-form"  for="preco_livro">Preço:</label>
+              <input id="preco_livro" type="number" formControlName="valor" class="form-control form-control-sm " required/>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                    (click)="livroForm.reset()">
+              Cancelar
+            </button>
+            <button type="button"
+                    class="btn btn-primary"
+                    data-bs-dismiss="modal"
+                    (click)="inserelivro()"
+                    [disabled]="!livroForm.valid">
+              Inserir
+            </button>
+          </div>
+        </div>
 
+      </div>
+
+    </div>
   </div>
