@@ -13,7 +13,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit {
-
+  valorTotalBiblioteca!: number;
   livros!: Livro[];
   leituras_atuais!: Livro[];
   livroForm = new  FormGroup ({
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
     imagem: new FormControl(""),
     valor: new FormControl(0),
     status: new FormControl(Status)
-  })
+  });
 
 
   constructor(private readonly livrosService: LivrosService){}
@@ -36,6 +36,8 @@ export class HomeComponent implements OnInit {
       next: (success: Livro[]) => {
         this.livros = success;
         this.leituras_atuais = this.livros.filter(x => x.status == Status.lendo);
+        this.valorTotalBiblioteca = 0;
+        this.livros.forEach( x => this.valorTotalBiblioteca += x.valor);
       }
     });
   }

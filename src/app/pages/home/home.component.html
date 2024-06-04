@@ -50,9 +50,10 @@
       <hr>
   </aside>
 
-  <main class="main container">
-    <section class="secao">
-      <h2 class="secao__titulo">Leituras recentes</h2>
+  <main class="main ">
+    <section class="secao leituras_recentes">
+      <h2 class="secao_titulo">LEITURAS RECENTES
+      </h2>
       <div class="lista__livros">
          <div class="card livros" *ngFor="let livro of  leituras_atuais">
             <div class="imagem">
@@ -68,16 +69,18 @@
       </div>
     </section>
 
-    <section class="secao_biblioteca_completa">
-      <div class="d-flex secao__titulo">
-        <h2 class="titulo">Biblioteca Completa</h2>
+    <section class="secao biblioteca_completa">
+      <div class="secao_titulo secao_titulo_biblioteca_completa">
+        <h2 class="titulo">Biblioteca Completa:</h2>
+        <div class="moeda"> <b> {{valorTotalBiblioteca | currency}} </b></div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary align-self-end" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          adicionar
-        </button>
-
+        <div class="botao">
+          <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            adicionar
+          </button>
+        </div>
       </div>
-      <div class="lista__livros todos_livros">
+      <div class="todos_livros ">
          <div class="livros" *ngFor="let livro of  livros">
           <div class="imagem me-2">
               <img
@@ -150,3 +153,4 @@
 
     </div>
   </div>
+  <button type="button" class="btn btn-lg btn-danger" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="And here's some amazing content. It's very engaging. Right?">Click to toggle popover</button>

@@ -7,14 +7,25 @@ img {
   border-radius: 5px;
   cursor: pointer;
 }
-img {
-  transition: transform 0.5s;
+.imagem {
+  transition: transform 0.2s;
 }
 
-img:hover {
-  transform: scale(0.8);
+.imagem:hover {
+  transform: scale(0.9);
 }
 
+.secao {
+  padding: 20px;
+}
+
+.secao_titulo {
+  text-align: center;
+  color: orange;
+  background-color: rgb(232, 255, 255);
+  padding: 10px;
+  margin-bottom: 20px;
+ }
 .lista__livros {
   display: grid;
   grid-auto-flow: column;
@@ -63,11 +74,11 @@ img:hover {
 }
 
 .todos_livros {
-  display: grid;
-  grid-auto-flow: column;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  column-gap: 1rem;
+  display: flex;
+  grid-auto-flow: row;
+  overflow-x: hide;
+  overflow-y: scroll;
+  column-gap: 0.5rem;
 }
 
 .card-livro {
@@ -80,8 +91,37 @@ img:hover {
 
 .bc_livro {
   width: 200px;
+  background-color: azure;
 }
 
 .label-form {
   width: 6rem;
+}
+
+.moeda {
+  font-family: Tahoma;
+  font-size: 24px;
+}
+
+.secao_titulo_biblioteca_completa {
+  display: grid;
+  grid-template-areas:
+  "nome valor botao";
+  grid-auto-columns: 20rem 30rem 1fr;
+}
+
+.secao_titulo_biblioteca_completa .titulo {
+  grid-area: nome;
+  width: 20rem;
+}
+
+.secao_titulo_biblioteca_completa .moeda {
+  grid-area: valor;
+  align-self: center;
+}
+
+.secao_titulo_biblioteca_completa .botao {
+  grid-area: botao;
+  width: 80px;
+  align-self: center;
 }
